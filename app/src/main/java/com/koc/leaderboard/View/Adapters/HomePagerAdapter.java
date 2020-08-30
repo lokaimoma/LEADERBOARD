@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.koc.leaderboard.View.LearnerFragment;
+import com.koc.leaderboard.View.HoursFragment;
 import com.koc.leaderboard.View.SkillIQFragment;
 
 /**
@@ -23,7 +23,7 @@ public class HomePagerAdapter extends FragmentStateAdapter {
         if (position == 1) {
             return new SkillIQFragment();
         }
-        return new LearnerFragment();
+        return new HoursFragment();
     }
 
     @Override

@@ -14,20 +14,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.koc.leaderboard.R;
-import com.koc.leaderboard.View.Adapters.SkillIqAdapter;
+import com.koc.leaderboard.View.Adapters.HoursAdapter;
 import com.koc.leaderboard.ViewModel.BaseViewModel;
 
 import java.util.ArrayList;
 
-
-public class SkillIQFragment extends Fragment {
+public class HoursFragment extends Fragment {
 
     private BaseViewModel viewModel;
-    private SkillIqAdapter adapter;
+    private HoursAdapter adapter;
     private ProgressBar progressBar;
-    private RecyclerView rvSkillIq;
+    private RecyclerView rvHours;
 
-    public SkillIQFragment() {
+    public HoursFragment() {
         // Required empty public constructor
     }
 
@@ -41,7 +40,7 @@ public class SkillIQFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_skill_i_q, container, false);
+        return inflater.inflate(R.layout.fragment_hours, container, false);
     }
 
     @Override
@@ -49,28 +48,29 @@ public class SkillIQFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         viewModel = new ViewModelProvider(this).get(BaseViewModel.class);
-        viewModel.fetchIQ();
+        viewModel.fetchHours();
 
         progressBar = view.findViewById(R.id.progressBar);
 
-        rvSkillIq = view.findViewById(R.id.rv_skill_iq);
-        adapter = new SkillIqAdapter(new ArrayList<>());
-        rvSkillIq.setAdapter(adapter);
-        rvSkillIq.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvHours = view.findViewById(R.id.rv_learners);
+        adapter = new HoursAdapter(new ArrayList<>());
+        rvHours.setAdapter(adapter);
+        rvHours.setLayoutManager(new LinearLayoutManager(getContext()));
 
         observeViewModel();
     }
 
     private void observeViewModel() {
-        viewModel.getIQ().observe(getViewLifecycleOwner(), iqModels -> {
-            if (!iqModels.isEmpty()) {
+        viewModel.getHours().observe(getViewLifecycleOwner(), hoursModels -> {
+            if (!hoursModels.isEmpty()) {
                 progressBar.animate()
                         .alpha(0.0f)
                         .setDuration(200)
                         .start();
                 progressBar.setVisibility(View.INVISIBLE);
-                rvSkillIq.setVisibility(View.VISIBLE);
-                adapter.insertList(iqModels);
+
+                rvHours.setVisibility(View.VISIBLE);
+                adapter.insertList(hoursModels);
             }
         });
     }
