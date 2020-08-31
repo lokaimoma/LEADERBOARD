@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class LeaderBoardService {
     private static final String BASE_URL = "https://gadsapi.herokuapp.com/";
-    private final LeaderBoardApi leaderBoardApi;
+    private static LeaderBoardApi leaderBoardApi;
 
     public LeaderBoardService() {
         leaderBoardApi = new Retrofit.Builder()
@@ -27,5 +27,13 @@ public class LeaderBoardService {
 
     public Call<List<HoursModel>> getHours() {
         return leaderBoardApi.getHours();
+    }
+
+    public static Call<Void> submit(String emailAddress, String firstName, String lastName, String linkToProject){
+        leaderBoardApi = new Retrofit.Builder()
+                .baseUrl("https://docs.google.com/forms/d/e/")
+                .build()
+                .create(LeaderBoardApi.class);
+        return leaderBoardApi.submit(emailAddress, firstName, lastName, linkToProject);
     }
 }

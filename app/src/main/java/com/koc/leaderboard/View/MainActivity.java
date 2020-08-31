@@ -1,13 +1,14 @@
 package com.koc.leaderboard.View;
 
-import androidx.annotation.NonNull;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
-
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.WindowManager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -26,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitleMarginTop(4);
         setSupportActionBar(toolbar);
+
 
         ViewPager2 viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(new HomePagerAdapter(this));
@@ -34,23 +37,24 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
 
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager,
-                new TabLayoutMediator.TabConfigurationStrategy() {
-                    @Override
-                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        switch (position) {
-                            case 0:
-                                tab.setText("Learning Leaders");
-                                break;
-                            case 1:
-                                tab.setText("Skill IQ Leaders");
-                                break;
-                        }
+                (tab, position) -> {
+                    switch (position) {
+                        case 0:
+                            tab.setText("Learning Leaders");
+                            break;
+                        case 1:
+                            tab.setText("Skill IQ Leaders");
+                            break;
                     }
                 });
 
 
         tabLayoutMediator.attach();
 
-
+        findViewById(R.id.submit).setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SubmitActivity.class);
+            startActivity(intent);
+        });
     }
+
 }
