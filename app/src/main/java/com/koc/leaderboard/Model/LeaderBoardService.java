@@ -30,10 +30,11 @@ public class LeaderBoardService {
     }
 
     public static Call<Void> submit(String emailAddress, String firstName, String lastName, String linkToProject){
-        leaderBoardApi = new Retrofit.Builder()
+        LeaderBoardApi api  = new Retrofit.Builder()
                 .baseUrl("https://docs.google.com/forms/d/e/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(LeaderBoardApi.class);
-        return leaderBoardApi.submit(emailAddress, firstName, lastName, linkToProject);
+        return api.submit(emailAddress, firstName, lastName, linkToProject);
     }
 }

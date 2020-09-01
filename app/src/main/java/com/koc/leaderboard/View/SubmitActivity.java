@@ -2,13 +2,13 @@ package com.koc.leaderboard.View;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.koc.leaderboard.Model.LeaderBoardService;
 import com.koc.leaderboard.R;
 
@@ -21,6 +21,7 @@ import retrofit2.internal.EverythingIsNonNull;
 
 
 public class SubmitActivity extends AppCompatActivity {
+    private static final String TAG = "SubmitActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,31 +49,30 @@ public class SubmitActivity extends AppCompatActivity {
             String lastN = lastName.getText().toString();
             String github = githubLink.getText().toString();
 
-            if (email.isEmpty() && firstN.isEmpty() && lastN.isEmpty() && github.isEmpty()) {
+            if (email.equals("") && firstN.equals("") && lastN.equals("") && github.equals("")) {
                 Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
-            }else {
-                LeaderBoardService.submit(
-                        email,
-                        firstN,
-                        lastN,
-                        github
-                ).enqueue(new Callback<Void>() {
+            } else {
+                Log.d(TAG, "onCreate: sending request");
+
+                Call<Void> response = LeaderBoardService.submit(email, firstN, lastN, github);
+
+                response.enqueue(new Callback<Void>() {
                     @EverythingIsNonNull
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.isSuccessful()){
-                            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getApplicationContext());
-                            builder.setView(R.layout.successfull_dialog);
-                            builder.create();
+                        Log.d(TAG, "onResponse: checking if successful");
+                        if (response.isSuccessful()) {
+                            Log.d(TAG, "onResponse: request successful");
+                            IsSuccessfulDialog isSuccessfulDialog = new IsSuccessfulDialog();
+                            isSuccessfulDialog.show(getSupportFragmentManager(), "Is successful dialog");
                         }
                     }
-
                     @EverythingIsNonNull
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getApplicationContext());
-                        builder.setView(R.layout.error_dialog);
-                        builder.create();
+                        Log.e(TAG, "onFailure: request failed", t);
+                        ErrorDialog errorDialog = new ErrorDialog();
+                        errorDialog.show(getSupportFragmentManager(), "Error dialog");
                     }
                 });
             }
