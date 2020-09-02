@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.SubmitActivity"
+        <activity android:name=".views.SubmitActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".View.MainActivity">
+            android:parentActivityName=".views.MainActivity">
         </activity>
         <activity
-            android:name=".View.MainActivity"
+            android:name=".views.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

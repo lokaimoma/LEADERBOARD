@@ -1,4 +1,6 @@
-package com.koc.leaderboard.Model;
+package com.koc.leaderboard.api;
+
+import com.koc.leaderboard.repository.model.*;
 
 import java.util.List;
 

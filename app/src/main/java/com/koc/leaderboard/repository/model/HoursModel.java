@@ -1,17 +1,17 @@
 
-package com.koc.leaderboard.Model;
+package com.koc.leaderboard.repository.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class IQModel {
+public class HoursModel {
 
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("score")
+    @SerializedName("hours")
     @Expose
-    private int score;
+    private int hours;
     @SerializedName("country")
     @Expose
     private String country;
@@ -25,12 +25,12 @@ public class IQModel {
         this.name = name;
     }
 
-    public int getScore() {
-        return score;
+    public int getHours() {
+        return hours;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setHours(int hours) {
+        this.hours = hours;
     }
 
     public String getCountry() {
@@ -40,6 +40,7 @@ public class IQModel {
     public void setCountry(String country) {
         this.country = country;
     }
+
 
 
 }

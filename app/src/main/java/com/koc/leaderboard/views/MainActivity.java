@@ -1,10 +1,8 @@
-package com.koc.leaderboard.View;
+package com.koc.leaderboard.views;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,7 +11,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.koc.leaderboard.R;
-import com.koc.leaderboard.View.Adapters.HomePagerAdapter;
+import com.koc.leaderboard.adapters.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,9 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        getWindow().setStatusBarColor(Color.BLACK);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitleMarginTop(4);

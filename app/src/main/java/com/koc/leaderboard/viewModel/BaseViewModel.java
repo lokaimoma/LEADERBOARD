@@ -1,13 +1,13 @@
-package com.koc.leaderboard.ViewModel;
+package com.koc.leaderboard.viewModel;
 
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.koc.leaderboard.Model.HoursModel;
-import com.koc.leaderboard.Model.IQModel;
-import com.koc.leaderboard.Model.LeaderBoardService;
+import com.koc.leaderboard.repository.model.HoursModel;
+import com.koc.leaderboard.repository.model.IQModel;
+import com.koc.leaderboard.repository.remoteDataSource.LeaderBoardService;
 
 import java.util.List;
 

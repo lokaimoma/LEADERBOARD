@@ -1,4 +1,4 @@
-package com.koc.leaderboard.View;
+package com.koc.leaderboard.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.koc.leaderboard.R;
-import com.koc.leaderboard.View.Adapters.SkillIqAdapter;
-import com.koc.leaderboard.ViewModel.BaseViewModel;
+import com.koc.leaderboard.adapters.SkillIqAdapter;
+import com.koc.leaderboard.viewModel.BaseViewModel;
 
 import java.util.ArrayList;
 

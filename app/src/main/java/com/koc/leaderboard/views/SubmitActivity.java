@@ -1,4 +1,4 @@
-package com.koc.leaderboard.View;
+package com.koc.leaderboard.views;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.koc.leaderboard.Model.LeaderBoardService;
+import com.koc.leaderboard.repository.remoteDataSource.LeaderBoardService;
 import com.koc.leaderboard.R;
 
 import java.util.Objects;
@@ -54,7 +54,12 @@ public class SubmitActivity extends AppCompatActivity {
             } else {
                 Log.d(TAG, "onCreate: sending request");
 
-                Call<Void> response = LeaderBoardService.submit(email, firstN, lastN, github);
+                Call<Void> response = new LeaderBoardService().submit(
+                        email,
+                        firstN,
+                        lastN,
+                        github
+                );
 
                 response.enqueue(new Callback<Void>() {
                     @EverythingIsNonNull

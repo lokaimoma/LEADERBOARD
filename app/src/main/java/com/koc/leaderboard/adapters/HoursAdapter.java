@@ -1,4 +1,4 @@
-package com.koc.leaderboard.View.Adapters;
+package com.koc.leaderboard.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.koc.leaderboard.Model.HoursModel;
+import com.koc.leaderboard.repository.model.*;
 import com.koc.leaderboard.R;
 
 import java.util.List;
@@ -27,6 +27,7 @@ public class HoursAdapter extends RecyclerView.Adapter<HoursAdapter.ViewHolder> 
     public void insertList(List<HoursModel> hours) {
         if (!learnersHours.isEmpty())
             learnersHours.clear();
+        
 
         learnersHours.addAll(hours);
         notifyDataSetChanged();

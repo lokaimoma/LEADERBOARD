@@ -1,6 +1,5 @@
-package com.koc.leaderboard.View;
+package com.koc.leaderboard.views;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
