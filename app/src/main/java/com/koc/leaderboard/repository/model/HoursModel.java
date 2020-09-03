@@ -4,6 +4,8 @@ package com.koc.leaderboard.repository.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Comparator;
+
 public class HoursModel {
 
     @SerializedName("name")
@@ -41,6 +43,7 @@ public class HoursModel {
         this.country = country;
     }
 
-
+    public static final Comparator<HoursModel> BY_HOURS =
+            Comparator.comparingInt(HoursModel::getHours);
 
 }

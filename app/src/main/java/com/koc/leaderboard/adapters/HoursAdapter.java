@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.koc.leaderboard.repository.model.*;
 import com.koc.leaderboard.R;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,9 +28,10 @@ public class HoursAdapter extends RecyclerView.Adapter<HoursAdapter.ViewHolder> 
     public void insertList(List<HoursModel> hours) {
         if (!learnersHours.isEmpty())
             learnersHours.clear();
-        
+
 
         learnersHours.addAll(hours);
+        Collections.sort(learnersHours, HoursModel.BY_HOURS.reversed());
         notifyDataSetChanged();
     }
 

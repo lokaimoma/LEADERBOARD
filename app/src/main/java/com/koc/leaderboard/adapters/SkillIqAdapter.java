@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.koc.leaderboard.repository.model.*;
 import com.koc.leaderboard.R;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,6 +30,7 @@ public class SkillIqAdapter extends RecyclerView.Adapter<SkillIqAdapter.ViewHold
             iqModels.clear();
 
         iqModels.addAll(iqs);
+        Collections.sort(iqModels, IQModel.BY_IQ.reversed());
         notifyDataSetChanged();
     }
 
