@@ -65,7 +65,6 @@ public class SubmitActivity extends AppCompatActivity {
                     @EverythingIsNonNull
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        Log.d(TAG, "onResponse: checking if successful");
                         if (response.isSuccessful()) {
                             Log.d(TAG, "onResponse: request successful");
                             IsSuccessfulDialog isSuccessfulDialog = new IsSuccessfulDialog();
