@@ -5,7 +5,7 @@ import com.koc.leaderboard.api.LeaderBoardApi;
 import java.util.List;
 import com.koc.leaderboard.repository.model.*;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
