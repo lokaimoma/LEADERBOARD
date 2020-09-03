@@ -4,6 +4,9 @@ import com.koc.leaderboard.api.LeaderBoardApi;
 
 import java.util.List;
 import com.koc.leaderboard.repository.model.*;
+
+import org.jetbrains.annotations.NotNull;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -17,11 +20,16 @@ public class LeaderBoardService {
     private static final String BASE_URL = "https://gadsapi.herokuapp.com/";
     private static LeaderBoardApi leaderBoardApi;
 
+    HttpLoggingInterceptor logging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC);
+    OkHttpClient client = new OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build();
 
 
     public LeaderBoardService() {
         leaderBoardApi = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(LeaderBoardApi.class);
@@ -38,6 +46,7 @@ public class LeaderBoardService {
     public Call<Void> submit(String emailAddress, String firstName, String lastName, String linkToProject){
         LeaderBoardApi api  = new Retrofit.Builder()
                 .baseUrl("https://docs.google.com/forms/d/e/")
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(LeaderBoardApi.class);
