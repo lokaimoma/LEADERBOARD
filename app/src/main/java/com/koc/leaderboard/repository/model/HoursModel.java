@@ -45,5 +45,4 @@ public class HoursModel {
 
     public static final Comparator<HoursModel> BY_HOURS =
             Comparator.comparingInt(HoursModel::getHours);
-
 }
