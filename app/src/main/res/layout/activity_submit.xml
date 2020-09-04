@@ -11,8 +11,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,9 +24,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:alpha="5"
             android:contentDescription="@string/gads_logo"
             android:scaleType="fitCenter"
-            android:alpha="5"
             android:src="@drawable/gad_transparent" />
 
     </androidx.appcompat.widget.Toolbar>

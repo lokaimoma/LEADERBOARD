@@ -15,6 +15,8 @@ import com.koc.leaderboard.adapters.*;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
